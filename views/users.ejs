@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <% include common_templates/header.ejs %>
+        <h1><%= title %></h1>
+        <p>Users in <%= title %></p>
+        <ol>
+            <% visitedplace.users.forEach(function(item){ %>
+                <li><%= item.first_name %> <%= item.last_name %></li>
+            <% }); %>
+        </ol>
+    </body>
+</html>

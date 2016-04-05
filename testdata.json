@@ -1,0 +1,35 @@
+{
+  "name": "Monjit Nunisa",
+  "visited": [
+    {
+      "city": "Guwahati",
+      "state": "Assam"
+    },
+    {
+      "city": "Kolkata",
+      "state": "West Bengal"
+    },
+    {
+      "city": "Bengaluru",
+      "state": "Karnataka"
+    },
+    {
+      "city": "Panaji",
+      "state": "Goa"
+    }
+  ],
+  "users": [
+    {
+      "first_name": "Monjit",
+      "last_name": "Nunisa"
+    },
+    {
+      "first_name": "Anoop",
+      "last_name": "Singh"
+    },
+    {
+      "first_name": "Shubhamoy",
+      "last_name": "Dhar"
+    }
+  ]
+}
