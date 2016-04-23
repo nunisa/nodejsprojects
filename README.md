@@ -12,3 +12,5 @@ REST API<br>
 <a href="https://getbootstrap.com/">Twitter Bootstrap</a> for styling
 
 Hosted this project at <a href="http://mynodedev.herokuapp.com/">My Express</a>
+
+<strong>Note:</strong> The latest code changes in this repository is <strong>not</strong> deployed to <a href="https://www.heroku.com/">Heroku</a> yet.
