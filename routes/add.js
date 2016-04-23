@@ -1,17 +1,15 @@
 // Add city name in the visited city list
 var express = require('express');
 var router = express.Router();
-var visitedplace = require('../testdata.json');
+var Services = require('./service-client');
 
 /*POST form data*/
 router.post('/', function(req, res) {
-    var newCity = req.body.city;
-    var newState = req.body.state;
-    visitedplace.visited.push({
-        "city": newCity,
-        "state": newState
+    var thisRes = res;
+    var apiClient = new Services();
+    apiClient.post('/api/places', req.body, function(err, res){
+        thisRes.redirect('/');
     });
-    res.redirect('/');
 });
 
 module.exports = router;

@@ -1,12 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var visitedplace = require('../testdata.json');
+var Services = require('./service-client');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'Express-LearnCode',
-        visitedplace: visitedplace
+    var thisRes = res;
+    var apiClient = new Services();
+    apiClient.get('/api/places', function(err, res){
+        console.log(res);
+        thisRes.render('index', {
+            title: 'Express-LearnCode',
+            visitedplace: JSON.parse(res)
+        });
     });
 });
 

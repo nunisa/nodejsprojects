@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><%= title %></title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
-    </head>
-    <body>
-        <% include common_templates/header.ejs %>
+<% layout('./common_templates/layout') %>
+<div class="row">
+    <div class="col-xs-12">
         <h1><%= title %></h1>
         <p>Users in <%= title %></p>
         <ol>
-            <% visitedplace.users.forEach(function(item){ %>
-                <li><%= item.first_name %> <%= item.last_name %></li>
+            <% visitedplace.forEach(function(item){ %>
+            <li><%= item.name %></li>
             <% }); %>
         </ol>
-    </body>
-</html>
+    </div>
+</div>
