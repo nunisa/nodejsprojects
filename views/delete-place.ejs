@@ -1,0 +1,34 @@
+<% layout('./common_templates/layout') %>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> Are you sure you want to delete this place?
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr class="success">
+                    <th>#</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="warning">
+                        <td>1</td>
+                        <td><%=visited_place.city%></td>
+                        <td><%=visited_place.state%></td>
+                        <td>
+                            <form class="form-inline" action="" method="post" role="form">
+                                <button type="submit" class="btn btn-danger btn-xs">Yes! Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/" class="btn btn-primary btn-xs" title="No! Go Back">No! Go Back</a>
+    </div>
+</div>

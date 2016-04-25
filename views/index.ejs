@@ -3,27 +3,31 @@
     <div class="col-xs-12">
         <p>Welcome to <%= title %></p>
         <p>You can add the cities name that you've visited:</p>
-        <ul>
-            <% visitedplace.forEach(function(item){ %>
-            <li><a href="#"><%= item.city %> in <%= item.state %></a></li>
-            <% }); %>
-        </ul>
-        <fieldset>
-            <legend>Add visited cities name here: </legend>
-            <form class="form-inline" action="/add" method="post" role="form">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="Enter full name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="city" placeholder="Enter city name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="state" placeholder="Enter state name">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </fieldset>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="success">
+                        <th>#</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var counter = 1; visited_place.forEach(function(item){ %>
+                        <tr class="warning">
+                            <td><%=counter%></td>
+                            <td><%=item.city%></td>
+                            <td><%=item.state%></td>
+                            <td>
+                                <a href="/place/<%=item._id%>" target="_blank" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="/place/delete/<%=item._id%>" target="_blank" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
+                        </tr>
+                    <% counter++ }); %>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-primary" href="/add-place" target="_blank">Add Place</a>
     </div>
 </div>
