@@ -1,0 +1,27 @@
+{
+  "name": "LearnCodeNodeJS",
+  "description": "Basic Node.js app using Express 4",
+  "main": "app.js",
+  "authors": [
+    "nunisa"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "homepage": "https://github.com/nunisa/nodejsprojects",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3"
+  }
+}

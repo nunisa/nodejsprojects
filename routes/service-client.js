@@ -1,6 +1,28 @@
 var http = require('http');
 var querystring = require('querystring');
 
+var port = normalizePort(process.env.PORT || '3000');
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
+
+    if (port >= 0) {
+        // port number
+        return port;
+    }
+
+    return false;
+}
+
 function Services(){}
 
 Services.prototype.get = function(req, url, callback){
@@ -9,8 +31,8 @@ Services.prototype.get = function(req, url, callback){
     if(req.params.id == undefined) reqURL += url;
     else reqURL += url+'/'+req.params.id;
     var options = {
-        host: 'localhost',
-        port: 3000,
+        host: 'mynodedev.herokuapp.com',
+        port: port,
         path: reqURL,
         method: 'GET',
         headers: {
@@ -30,8 +52,8 @@ Services.prototype.post = function(url, form_data, callback){
     if(url == '') return callback(err, res);
     var post_data = querystring.stringify(form_data);
     var options = {
-        host: 'localhost',
-        port: 3000,
+        host: 'mynodedev.herokuapp.com',
+        port: port,
         path: url+'?'+post_data,
         method: 'POST',
         headers: {
@@ -54,8 +76,8 @@ Services.prototype.put = function(req, url, form_data, callback){
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id+'?'+put_data;
     var options = {
-        host: 'localhost',
-        port: 3000,
+        host: 'mynodedev.herokuapp.com',
+        port: port,
         path: reqURL,
         method: 'PUT',
         headers: {
@@ -77,8 +99,8 @@ Services.prototype.delete = function(req, url, callback){
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id;
     var options = {
-        host: 'localhost',
-        port: 3000,
+        host: 'mynodedev.herokuapp.com',
+        port: port,
         path: reqURL,
         method: 'DELETE',
         headers: {
@@ -86,8 +108,9 @@ Services.prototype.delete = function(req, url, callback){
         }
     };
     var temp = http.request(options, function(res){
-        res.on('data', function (chunk) {
-            callback(null, chunk);
+        res.on('data', function (data) {
+            var response = data.toString('utf8');
+            callback(null, response);
         });
     });
     temp.end();

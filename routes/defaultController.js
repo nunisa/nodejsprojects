@@ -75,7 +75,7 @@ function delete_place(req, res){
     var apiClient = new Services();
     if(req.method != 'GET'){
         apiClient.delete(req, '/api/places', function(err, res){
-            console.log(res.toString('utf8'));
+            console.log(res);
             thisRes.redirect('/');
         });
     }else{
