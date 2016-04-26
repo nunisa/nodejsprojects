@@ -31,7 +31,7 @@ Services.prototype.get = function(req, url, callback){
     if(req.params.id == undefined) reqURL += url;
     else reqURL += url+'/'+req.params.id;
     var options = {
-        host: 'http://mynodedev.herokuapp.com',
+        host: 'http://mynodedev.herokuapp.com/',
         port: port,
         path: reqURL,
         method: 'GET',
@@ -52,7 +52,7 @@ Services.prototype.post = function(url, form_data, callback){
     if(url == '') return callback(err, res);
     var post_data = querystring.stringify(form_data);
     var options = {
-        host: 'http://mynodedev.herokuapp.com',
+        host: 'http://mynodedev.herokuapp.com/',
         port: port,
         path: url+'?'+post_data,
         method: 'POST',
@@ -76,7 +76,7 @@ Services.prototype.put = function(req, url, form_data, callback){
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id+'?'+put_data;
     var options = {
-        host: 'http://mynodedev.herokuapp.com',
+        host: 'http://mynodedev.herokuapp.com/',
         port: port,
         path: reqURL,
         method: 'PUT',
@@ -99,7 +99,7 @@ Services.prototype.delete = function(req, url, callback){
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id;
     var options = {
-        host: 'http://mynodedev.herokuapp.com',
+        host: 'http://mynodedev.herokuapp.com/',
         port: port,
         path: reqURL,
         method: 'DELETE',
