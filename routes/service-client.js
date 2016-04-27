@@ -51,10 +51,11 @@ Services.prototype.get = function(req, url, callback){
 Services.prototype.post = function(url, form_data, callback){
     if(url == '') return callback(err, res);
     var post_data = querystring.stringify(form_data);
+    var reqURL = 'http://mynodedev.herokuapp.com'+url+'?'+post_data;
     var options = {
         host: 'mynodedev.herokuapp.com',
         port: port,
-        path: 'http://mynodedev.herokuapp.com'+url+'?'+post_data,
+        path: reqURL,
         method: 'POST',
         headers: {
             accept: 'application/json'
