@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
 var monk = require('monk');
-var db = monk('mongodb://root:root123@ds021771.mlab.com:21771/learncodenodejs');
+
+var uri = process.env.PROD_MONGODB || 'localhost:27017/learncodenodejs';
+var db = monk(uri);
 
 router.get('/', function(req, res){
     var collection = db.get('visited_places');
