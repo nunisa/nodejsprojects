@@ -27,7 +27,7 @@ function Services(){}
 
 Services.prototype.get = function(req, url, callback){
     if(url == '') return callback(err, res);
-    var reqURL = '';
+    var reqURL = 'http://mynodedev.herokuapp.com';
     if(req.params.id == undefined) reqURL += url;
     else reqURL += url+'/'+req.params.id;
     var options = {
@@ -54,7 +54,7 @@ Services.prototype.post = function(url, form_data, callback){
     var options = {
         host: 'mynodedev.herokuapp.com',
         port: port,
-        path: url+'?'+post_data,
+        path: 'http://mynodedev.herokuapp.com'+url+'?'+post_data,
         method: 'POST',
         headers: {
             accept: 'application/json'
@@ -72,7 +72,7 @@ Services.prototype.post = function(url, form_data, callback){
 Services.prototype.put = function(req, url, form_data, callback){
     if(url == '') return callback(err, res);
     var put_data = querystring.stringify(form_data);
-    var reqURL = '';
+    var reqURL = 'http://mynodedev.herokuapp.com';
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id+'?'+put_data;
     var options = {
@@ -95,7 +95,7 @@ Services.prototype.put = function(req, url, form_data, callback){
 
 Services.prototype.delete = function(req, url, callback){
     if(url == '') return callback(err, res);
-    var reqURL = '';
+    var reqURL = 'http://mynodedev.herokuapp.com';
     if(req.params.id == undefined) return callback(err, res);
     else reqURL += url+'/'+req.params.id;
     var options = {
