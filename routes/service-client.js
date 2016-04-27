@@ -1,7 +1,7 @@
 var http = require('http');
 var querystring = require('querystring');
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '5000');
 
 /**
  * Normalize a port into a number, string, or false.
