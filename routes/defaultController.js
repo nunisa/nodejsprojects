@@ -3,8 +3,8 @@ var Services = require('./service-client');
 
 function index(req, res){
     var thisRes = res;
-    var apiClient = new Services();
-    apiClient.get(req, '/api/places', function(err, res){
+    var apiClient = new Services(req, '/api/places');
+    apiClient.get(function(err, res){
         console.log(res);
         thisRes.render('index', {
             title: 'Home Express',
@@ -15,8 +15,8 @@ function index(req, res){
 
 function users(req, res){
     var thisRes = res;
-    var apiClient = new Services();
-    apiClient.get(req, '/api/places', function(err, res){
+    var apiClient = new Services(req, '/api/places');
+    apiClient.get(function(err, res){
         console.log(res);
         thisRes.render('users', {
             title: 'Users Express',
@@ -27,8 +27,8 @@ function users(req, res){
 
 function about(req, res){
     var thisRes = res;
-    var apiClient = new Services();
-    apiClient.get(req, '/api/places', function(err, res){
+    var apiClient = new Services(req, '/api/places');
+    apiClient.get(function(err, res){
         console.log(res);
         thisRes.render('about', {
             title: 'About Express'
@@ -38,9 +38,9 @@ function about(req, res){
 
 function add_place(req, res){
     var thisRes = res;
-    var apiClient = new Services();
+    var apiClient = new Services(req, '/api/places');
     if(req.method != 'GET'){
-        apiClient.post('/api/places', req.body, function(err, res){
+        apiClient.post(req.body, function(err, res){
             console.log(res);
             thisRes.redirect('/');
         });
@@ -53,14 +53,14 @@ function add_place(req, res){
 
 function edit_place(req, res){
     var thisRes = res;
-    var apiClient = new Services();
+    var apiClient = new Services(req, '/api/places');
     if(req.method != 'GET'){
-        apiClient.put(req, '/api/places', req.body, function(err, res){
+        apiClient.put(req.body, function(err, res){
             console.log(res);
             thisRes.redirect('/');
         });
     }else{
-        apiClient.get(req, '/api/places', function(err, res){
+        apiClient.get(function(err, res){
             console.log(res);
             thisRes.render('edit-place', {
                 title: 'Edit Express',
@@ -72,14 +72,14 @@ function edit_place(req, res){
 
 function delete_place(req, res){
     var thisRes = res;
-    var apiClient = new Services();
+    var apiClient = new Services(req, '/api/places');
     if(req.method != 'GET'){
-        apiClient.delete(req, '/api/places', function(err, res){
+        apiClient.delete(function(err, res){
             console.log(res);
             thisRes.redirect('/');
         });
     }else{
-        apiClient.get(req, '/api/places', function(err, res){
+        apiClient.get(function(err, res){
             console.log(res);
             thisRes.render('delete-place', {
                 title: 'Delete Express',

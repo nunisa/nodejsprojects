@@ -1,21 +1,26 @@
 var http = require('http');
 var querystring = require('querystring');
 
-function Services(){}
-
-Services.prototype.get = function(req, url, callback){
+var Services = function(req, url){
     if(url == '') return callback(err, res);
-    var reqURL = 'http://mynodedev.herokuapp.com';
+    var reqURL = '';
     if(req.params.id == undefined) reqURL += url;
     else reqURL += url+'/'+req.params.id;
-    var options = {
-        host: 'mynodedev.herokuapp.com',
+    this.apiURL = reqURL;
+    this.description = {
+        host: req.hostname,
+        port: '3000',
         path: reqURL,
-        method: 'GET',
+        method: '',
         headers: {
             'Content-Type': 'application/json'
         }
     };
+};
+
+Services.prototype.get = function(callback){
+    this.description.method = 'GET';
+    var options = this.description;
     var temp = http.request(options, function(res){
         res.on('data', function(data){
             var response = data.toString('utf8');
@@ -25,18 +30,11 @@ Services.prototype.get = function(req, url, callback){
     temp.end();
 };
 
-Services.prototype.post = function(url, form_data, callback){
-    if(url == '') return callback(err, res);
+Services.prototype.post = function(form_data, callback){
     var post_data = querystring.stringify(form_data);
-    var reqURL = 'http://mynodedev.herokuapp.com'+url+'?'+post_data;
-    var options = {
-        host: 'mynodedev.herokuapp.com',
-        path: reqURL,
-        method: 'POST',
-        headers: {
-            accept: 'application/json'
-        }
-    };
+    this.description.path = this.apiURL+'?'+post_data;
+    this.description.method = 'POST';
+    var options = this.description;
     var temp = http.request(options, function(res){
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
@@ -46,20 +44,11 @@ Services.prototype.post = function(url, form_data, callback){
     temp.end();
 };
 
-Services.prototype.put = function(req, url, form_data, callback){
-    if(url == '') return callback(err, res);
+Services.prototype.put = function(form_data, callback){
     var put_data = querystring.stringify(form_data);
-    var reqURL = 'http://mynodedev.herokuapp.com';
-    if(req.params.id == undefined) return callback(err, res);
-    else reqURL += url+'/'+req.params.id+'?'+put_data;
-    var options = {
-        host: 'mynodedev.herokuapp.com',
-        path: reqURL,
-        method: 'PUT',
-        headers: {
-            accept: 'application/json'
-        }
-    };
+    this.description.path = this.apiURL+'?'+put_data;
+    this.description.method = 'PUT';
+    var options = this.description;
     var temp = http.request(options, function(res){
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
@@ -69,19 +58,9 @@ Services.prototype.put = function(req, url, form_data, callback){
     temp.end();
 };
 
-Services.prototype.delete = function(req, url, callback){
-    if(url == '') return callback(err, res);
-    var reqURL = 'http://mynodedev.herokuapp.com';
-    if(req.params.id == undefined) return callback(err, res);
-    else reqURL += url+'/'+req.params.id;
-    var options = {
-        host: 'mynodedev.herokuapp.com',
-        path: reqURL,
-        method: 'DELETE',
-        headers: {
-            accept: 'application/json'
-        }
-    };
+Services.prototype.delete = function(callback){
+    this.description.method = 'DELETE';
+    var options = this.description;
     var temp = http.request(options, function(res){
         res.on('data', function (data) {
             var response = data.toString('utf8');
