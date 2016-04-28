@@ -9,6 +9,7 @@ var Services = function(req, url){
     this.apiURL = reqURL;
     this.description = {
         host: req.hostname,
+        port: '3000',
         path: reqURL,
         method: '',
         headers: {
