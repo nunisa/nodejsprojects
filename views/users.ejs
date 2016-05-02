@@ -4,8 +4,8 @@
         <h1><%= title %></h1>
         <p>Users in <%= title %></p>
         <ol>
-            <% visited_place.forEach(function(item){ %>
-            <li><%= item.name %></li>
+            <% regd_users.forEach(function(user){ %>
+            <li><%= user.username %></li>
             <% }); %>
         </ol>
     </div>

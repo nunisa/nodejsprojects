@@ -11,11 +11,13 @@ var methodOverride = require('method-override');
 // var users = require('./routes/users');
 // var about = require('./routes/about');
 // var add_places = require('./routes/add');
-var resources = require('./routes/api-resources');
+var apiPlaces = require('./routes/api-places');
+var apiUsers = require('./routes/api-users');
 
 var app = express();
 
-// app.locals.visitedplace = require('./testdata.json');
+// DB CONNECTION --> TRY IT
+// require('./db-config')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views/'));
@@ -36,7 +38,8 @@ app.use('/bower_components', express.static(path.join(__dirname, '/bower_compone
 // app.use('/users', users);
 // app.use('/about', about);
 // app.use('/add', add_places);
-app.use('/api/places', resources);
+app.use('/api/places', apiPlaces);
+app.use('/api/users', apiUsers);
 
 // wire request 'pre' actions
 wirePreRequest(app);

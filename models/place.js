@@ -18,7 +18,6 @@ var placeSchema = new Schema({
     }
 });
 
-
 var Place = mongoose.model('Place', placeSchema, 'visited_places');
 
 module.exports = Place;

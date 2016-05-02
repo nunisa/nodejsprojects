@@ -15,12 +15,12 @@ function index(req, res){
 
 function users(req, res){
     var thisRes = res;
-    var apiClient = new Services(req, '/api/places');
+    var apiClient = new Services(req, '/api/users');
     apiClient.get(function(err, res){
         console.log(res);
         thisRes.render('users', {
             title: 'Users Express',
-            visited_place: JSON.parse(res)
+            regd_users: JSON.parse(res)
         });
     });
 }
